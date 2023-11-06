@@ -1,3 +1,27 @@
+// src/components/Houses.js
+import React, { useEffect } from "react";
+import Chart from "chart.js/auto";
+
+const Houses = () => {
+  useEffect(() => {
+    doProcess();
+  }, []);
+
+  return (
+    <div className="container mt-5">
+      <h1 className="text-center display-4">Exercise 02 - Charts</h1>
+      <canvas
+        className="donut-chart"
+        aria-label="donut chart"
+        role="img"
+      ></canvas>
+    </div>
+  );
+};
+
+export default Houses;
+
+////////////////////////////////
 const backgroundColors = [
   "rgba(54, 162, 235, 0.8)",
   "rgba(255, 206, 86, 0.8)",
@@ -95,49 +119,49 @@ const renderChart = (newList, recurrs) => {
   });
 };
 
-renderChart();
-
-fetch(url)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    // Looping through the array of characters
-    console.log(data);
-    let list = [];
-    data.forEach((character) => {
-      list.push(character.family);
-    });
-
-    let newList = [];
-    let recurrs = [];
-    while (list[0]) {
-      if (newList.includes(list[0]) == false) {
-        let tempName = list[0];
-        let tempCount = 0;
-
-        // Remove all instances of 'Banana' from the original array
-        for (let i = list.length - 1; i >= 0; i--) {
-          if (list[i] == tempName) {
-            list.splice(i, 1);
-            tempCount++;
-          }
-        }
-
-        // console.log(tempName, tempCount);
-        newList.push(tempName);
-        recurrs.push(tempCount);
+const doProcess = () => {
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    }
+      return response.json();
+    })
+    .then((data) => {
+      // Looping through the array of characters
+      console.log(data);
+      let list = [];
+      data.forEach((character) => {
+        list.push(character.family);
+      });
 
-    renderChart(newList, recurrs);
+      let newList = [];
+      let recurrs = [];
+      while (list[0]) {
+        if (newList.includes(list[0]) == false) {
+          let tempName = list[0];
+          let tempCount = 0;
 
-    // console.log(list);
-  })
-  .catch((error) => {
-    // Handle errors here
-    console.error("Error fetching data:", error);
-  });
+          // Remove all instances of 'Banana' from the original array
+          for (let i = list.length - 1; i >= 0; i--) {
+            if (list[i] == tempName) {
+              list.splice(i, 1);
+              tempCount++;
+            }
+          }
+
+          // console.log(tempName, tempCount);
+          newList.push(tempName);
+          recurrs.push(tempCount);
+        }
+      }
+
+      renderChart(newList, recurrs);
+
+      // console.log(list);
+    })
+    .catch((error) => {
+      // Handle errors here
+      console.error("Error fetching data:", error);
+    });
+};
