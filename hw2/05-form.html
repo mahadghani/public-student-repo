@@ -7,13 +7,86 @@
     <title>05 - Form</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
     <script defer src="05-form.js"></script>
   </head>
   <body>
     <main>
-      <form>
-        <h1>Exercise 05 - Form</h1>
+      <form
+        class="container-sm p-3 bg-light rounded-2 my-5"
+        style="width: 800px"
+      >
+        <h1 class="text-center my-3">Exercise 05 - Form</h1>
+
+        <div class="mb-3">
+          <label for="inputName" class="form-label fw-bold">Full Name:</label>
+          <input type="text" class="form-control" id="inputName" />
+        </div>
+        <div class="mb-3">
+          <label for="inputEmail" class="form-label fw-bold">Email:</label>
+          <input type="email" class="form-control" id="inputEmail" />
+        </div>
+
+        <div class="dropdown mb-3">
+          <label for="choice-dropdown" class="form-label fw-bold"
+            >Registration Status:</label
+          >
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="choice-dropdown"
+            data-bs-toggle="dropdown"
+            style="background-color: white; color: black; display: block"
+          >
+            Choose an Option
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="choice-dropdown">
+            <li><a href="#" class="dropdown-item">Registered</a></li>
+            <li><a href="#" class="dropdown-item">Not Registered</a></li>
+          </ul>
+        </div>
+
+        <div class="mb-3 form-check">
+          <label class="form-label fw-bold"
+            >Have you taken any of the following courses?</label
+          >
+          <div>
+            <input type="checkbox" class="form-check-input" id="check1" />
+            <label class="form-check-label" for="check1"
+              >Programming Languages</label
+            >
+          </div>
+          <div>
+            <input type="checkbox" class="form-check-input" id="check2" />
+            <label class="form-check-label" for="check2"
+              >Operating Systems</label
+            >
+          </div>
+          <div>
+            <input type="checkbox" class="form-check-input" id="check3" />
+            <label class="form-check-label" for="check3"
+              >Full Stack Web Development</label
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="inputAE" class="form-label fw-bold">Anything Else?</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputAE"
+            style="height: 100px"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" style="width: 22em">
+            Submit
+          </button>
+          <button type="reset" class="btn btn-secondary" style="width: 22em">
+            Reset
+          </button>
+        </div>
       </form>
     </main>
   </body>
